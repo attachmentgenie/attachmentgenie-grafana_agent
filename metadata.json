@@ -1,6 +1,6 @@
 {
   "name": "attachmentgenie-grafana_agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "attachmentgenie",
   "summary": "Setup and configure grafana agent",
   "license": "MIT",
