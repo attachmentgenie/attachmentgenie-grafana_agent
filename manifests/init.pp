@@ -45,9 +45,11 @@ class grafana_agent (
   Optional[Hash] $server_config_hash = undef,
   Optional[Hash] $tempo_config_hash = undef,
 ) {
-  anchor { 'grafana_agent::begin': }
-  -> class{ '::grafana_agent::install': }
-  -> class{ '::grafana_agent::config': }
-  ~> class{ '::grafana_agent::service': }
-  -> anchor { 'grafana_agent::end': }
+  contain 'grafana_agent::install'
+  contain 'grafana_agent::config'
+  contain 'grafana_agent::service'
+
+  Class['grafana_agent::install']
+  -> Class['grafana_agent::config']
+  ~> Class['grafana_agent::service']
 }

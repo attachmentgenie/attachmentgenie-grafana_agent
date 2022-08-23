@@ -76,7 +76,7 @@ class grafana_agent::config {
     }
   }
 
-  if $::grafana_agent::manage_service {
+  if $grafana_agent::manage_service {
     Concat[$config_file] ~> Service['grafana-agent']
   }
 }
