@@ -11,5 +11,5 @@ grafana_agent::service_name: 'grafana-agent'
 grafana_agent::service_provider: 'systemd'
 grafana_agent::service_ensure: 'running'
 grafana_agent::user: 'grafana-agent'
-grafana_agent::version: 'v0.24.2'
+grafana_agent::version: '0.41.1'
 ...

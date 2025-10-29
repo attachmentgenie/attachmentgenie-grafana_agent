@@ -36,6 +36,11 @@ class grafana_agent::install {
         }
       }
 
+      if versioncmp($grafana_agent::version, '0.30.2') <= 0 {
+        $_dl_archive_name = 'agent-linux-amd64.zip'
+      } else {
+        $_dl_archive_name = 'grafana-agent-linux-arm64.zip'
+      }
       archive { 'grafana-agent archive':
         cleanup      => true,
         creates      => "${grafana_agent::install_dir}/agent-linux-amd64",
@@ -43,7 +48,7 @@ class grafana_agent::install {
         extract_path => $grafana_agent::install_dir,
         group        => $grafana_agent::group,
         path         => '/tmp/grafana-agent.zip',
-        source       => "https://github.com/grafana/agent/releases/download/${grafana_agent::version}/agent-linux-amd64.zip",
+        source       => "https://github.com/grafana/agent/releases/download/${grafana_agent::version}/${_dl_archive_name}",
         user         => $grafana_agent::user,
         require      => File['grafana-agent install dir'],
       }
